@@ -59,7 +59,7 @@ async def test_mux_01(dut):
 async def test_mux_02(dut):
     """Test for mux2"""
      # input driving
- 
+     #Driving each input with '01'---'HIGH'
     INPUT=[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
     dut.inp0.value=INPUT[0]
     dut.inp1.value=INPUT[1]
