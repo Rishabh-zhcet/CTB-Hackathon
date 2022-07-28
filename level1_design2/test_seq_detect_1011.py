@@ -51,10 +51,4 @@ async def test_seq_bug1(dut):
 
         dut._log.info(f'Next_Input_bit={input}  last 4bits seq={input_seq[i+1:i+5]}  output={dut.seq_seen.value}, result={result}')
         #assert dut.out.value == INPUT[i], "MUX output failed with: sel={SEL},  output={OUT}" .format( SEL= dut.sel.value, OUT=dut.out.value)
- 
-
-
-
-
-
-    
+        
