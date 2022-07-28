@@ -36,12 +36,8 @@ async def test_seq_bug1(dut):
         input=random.randint(0,1)
         dut.inp_bit.value= input
         input_seq.append(input)
-
         await Timer(10, units='ns')
-        #print(input)
-        #print(input_seq)
-        #print(input_seq[i+1:i+5])
-        #print(f'input is {input_seq[i+1:i+5]} and output is {dut.seq_seen.value}')
+        
         if(input_seq[i+1:i+5]==[1 , 0, 1, 1]):
             if(dut.seq_seen.value==1):
                 result='------PASSED------'
