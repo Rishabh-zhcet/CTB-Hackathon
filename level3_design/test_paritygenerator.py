@@ -51,6 +51,6 @@ async def test_parity_generator(dut):
                 else:
                     result='------------------'
 
-            dut._log.info(f'Next_Input_bit={input}  last 4bits seq={input_seq[i:i+3]}  Parity={dut.p.value}, result={result}')
+            dut._log.info(f'last 3bits seq={input_seq[i:i+3]}  Parity={dut.p.value}, result={result}, i={i}')
             #assert dut.out.value == INPUT[i], "MUX output failed with: sel={SEL},  output={OUT}" .format( SEL= dut.sel.value, OUT=dut.out.value)
             
