@@ -3,6 +3,7 @@
 module Top_module(
 input w,
 input clk,
+input reset,
 output reg p
    );
 
@@ -61,6 +62,12 @@ endcase
 end  
     
 always@(posedge clk)
-PS<=NS;
+begin
+    if(reset)
+        PS<=S0;
+    else
+        PS<=NS;
+end
+
 
 endmodule

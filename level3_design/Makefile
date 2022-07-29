@@ -4,10 +4,10 @@ TOPLEVEL_LANG ?= verilog
 
 PWD=$(shell pwd)
 
-VERILOG_SOURCES = $(PWD)/               # provide your design path
+VERILOG_SOURCES = $(PWD)/paritygenerator.v
 
-TOPLEVEL :=           # design file
-MODULE   :=     # test file
+TOPLEVEL :=     paritygenerator.v
+MODULE   :=     test_paritygenerator.py
 
 include $(shell cocotb-config --makefiles)/Makefile.sim
 
