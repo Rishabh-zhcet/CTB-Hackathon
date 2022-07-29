@@ -54,7 +54,8 @@ S4: begin
 S5: begin
     p=1'b1;
     if(!w)  NS=S1;
-    else    NS=S0;
+    ###-------------BUG--------------### S2 is replaced with S0 in else case
+    else    NS=S0; 
     end
     
 default: begin end 
