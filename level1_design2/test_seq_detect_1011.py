@@ -30,7 +30,7 @@ async def test_seq_bug1(dut):
     await RisingEdge(dut.clk)
     await Timer(2, units='ns')
 
-    input_seq=[0,0,0,0,0];
+    input_seq=[0,0,0,0,0]
     for i in range(300):
         await RisingEdge(dut.clk)
         input=random.randint(0,1)

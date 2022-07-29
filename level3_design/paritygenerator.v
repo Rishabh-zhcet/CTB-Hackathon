@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module Top_module(
+module paritygenerator(
 input w,
 input clk,
 input reset,

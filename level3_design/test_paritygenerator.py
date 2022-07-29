@@ -12,7 +12,7 @@ from cocotb.clock import Clock
 from cocotb.triggers import RisingEdge, FallingEdge, Timer
 
 @cocotb.test()
-async def test_seq_bug1(dut):
+async def test_parity_generator(dut):
     """Test for seq detection """
 
    
@@ -31,25 +31,26 @@ async def test_seq_bug1(dut):
     await Timer(2, units='ns')
 
     input_seq=[0,0,0,0,0];
-    for i in range(300):
+    for i in range(2,300):
         await RisingEdge(dut.clk)
         input=random.randint(0,1)
         dut.w.value= input
         input_seq.append(input)
         await Timer(10, units='ns')
         
-        if( input_seq[i+1] ^ input_seq[i+2] ^input_seq[i+3])
-            ):
-            if(dut.p.value==1):
-                result='------PASSED------'
+        if(i%3==0):
+            if( (input_seq[i] ^ input_seq[i+1] ^input_seq[i+2])==1):
+                
+                if(dut.p.value==1):
+                    result='------PASSED------'
+                else:
+                    result='------FAILED------'
             else:
-                result='------FAILED------'
-        else:
-            if(dut.seq_seen.value==1):
-                result='------FAILED EXPLICITLY------'
-            else:
-                result='------------------'
+                if(dut.p.value==1):
+                    result='------FAILED EXPLICITLY------'
+                else:
+                    result='------------------'
 
-        dut._log.info(f'Next_Input_bit={input}  last 4bits seq={input_seq[i+1:i+4]}  Parity={dut.p.value}, result={result}')
-        #assert dut.out.value == INPUT[i], "MUX output failed with: sel={SEL},  output={OUT}" .format( SEL= dut.sel.value, OUT=dut.out.value)
-        
+            dut._log.info(f'Next_Input_bit={input}  last 4bits seq={input_seq[i:i+3]}  Parity={dut.p.value}, result={result}')
+            #assert dut.out.value == INPUT[i], "MUX output failed with: sel={SEL},  output={OUT}" .format( SEL= dut.sel.value, OUT=dut.out.value)
+            

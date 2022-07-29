@@ -6,8 +6,8 @@ PWD=$(shell pwd)
 
 VERILOG_SOURCES = $(PWD)/paritygenerator.v
 
-TOPLEVEL :=     paritygenerator.v
-MODULE   :=     test_paritygenerator.py
+TOPLEVEL :=     paritygenerator
+MODULE   :=     test_paritygenerator
 
 include $(shell cocotb-config --makefiles)/Makefile.sim
 
