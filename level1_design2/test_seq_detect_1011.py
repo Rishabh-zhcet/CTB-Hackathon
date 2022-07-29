@@ -31,7 +31,7 @@ async def test_seq_bug1(dut):
     await Timer(2, units='ns')
 
     input_seq=[0,0,0,0,0]
-    for i in range(300):
+    for i in range(1000):
         await RisingEdge(dut.clk)
         input=random.randint(0,1)
         dut.inp_bit.value= input

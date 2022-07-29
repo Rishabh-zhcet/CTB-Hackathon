@@ -4,9 +4,9 @@ TOPLEVEL_LANG ?= verilog
 
 PWD=$(shell pwd)
 
-VERILOG_SOURCES = $(PWD)/paritygenerator.v
+VERILOG_SOURCES = $(PWD)/ buggy_paritygenerator.v
 
-TOPLEVEL :=     paritygenerator
+TOPLEVEL :=     buggy_paritygenerator
 MODULE   :=     test_paritygenerator
 
 include $(shell cocotb-config --makefiles)/Makefile.sim
