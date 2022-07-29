@@ -37,8 +37,10 @@ async def test_parity_generator(dut):
         dut.w.value= input
         input_seq.append(input)
         await Timer(10, units='ns')
-        
+
+        #Checking for non overlapping sequence of last 3 bits
         if(i%3==0):
+            #checking the parity bit by doing XOR operation on all three inputs
             if( (input_seq[i] ^ input_seq[i+1] ^input_seq[i+2])==1):
                 
                 if(dut.p.value==1):
