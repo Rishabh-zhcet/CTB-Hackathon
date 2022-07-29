@@ -34,12 +34,13 @@ async def test_seq_bug1(dut):
     for i in range(300):
         await RisingEdge(dut.clk)
         input=random.randint(0,1)
-        dut.inp_bit.value= input
+        dut.w.value= input
         input_seq.append(input)
         await Timer(10, units='ns')
         
-        if(input_seq[i+1:i+5]==[1 , 0, 1, 1]):
-            if(dut.seq_seen.value==1):
+        if( input_seq[i+1] ^ input_seq[i+2] ^input_seq[i+3])
+            ):
+            if(dut.p.value==1):
                 result='------PASSED------'
             else:
                 result='------FAILED------'
@@ -49,6 +50,6 @@ async def test_seq_bug1(dut):
             else:
                 result='------------------'
 
-        dut._log.info(f'Next_Input_bit={input}  last 4bits seq={input_seq[i+1:i+5]}  output={dut.seq_seen.value}, result={result}')
+        dut._log.info(f'Next_Input_bit={input}  last 4bits seq={input_seq[i+1:i+4]}  Parity={dut.p.value}, result={result}')
         #assert dut.out.value == INPUT[i], "MUX output failed with: sel={SEL},  output={OUT}" .format( SEL= dut.sel.value, OUT=dut.out.value)
         
