@@ -55,7 +55,7 @@ if flag is not equal to 1. means no test fails. Then assert statement is used fo
   assert flag== 0, "MUX output failed "
 ```
 
-## Test Scenario **(Important)**
+## Test Scenario
 
 Following error message exposed that there is a bug in the design:'
 
