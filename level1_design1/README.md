@@ -49,7 +49,7 @@ Now if statement is used inside for loop to check the result for each test case,
             print(f"FOR: sel={SEL},  INPUT!=OUTPUT        [test]  [------------Failed------------]")
             flag=1
 ```
-if flag is not equal to 1. means no test fails. Then assert statement is used for checing the complete verification of design.
+if flag is not equal to 1. means no test fails. Then assert statement is used for checking the complete verification of design.
 
   ```
   assert flag== 0, "MUX output failed "
