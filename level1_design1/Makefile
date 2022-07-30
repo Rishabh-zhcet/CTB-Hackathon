@@ -10,6 +10,6 @@ TOPLEVEL := mux          # design
 MODULE   := test_mux     # test
 
 include $(shell cocotb-config --makefiles)/Makefile.sim
-.xml sim_build __pycache__ 
+
 clean_all: clean
-	rm -rf *
+	rm -rf *.xml sim_build __pycache__ 
