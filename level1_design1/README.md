@@ -117,7 +117,7 @@ Hence, one select case should be added for inp30.
 ## Design Fix
 Updating the design and re-running the test makes the test pass.
 
-![image](https://user-images.githubusercontent.com/65393666/181976117-a8ce1669-54bd-46b5-886b-1c820ef09249.png)
+![image](https://user-images.githubusercontent.com/65393666/181988568-8d73488f-d5b4-405f-8d9b-5fbd1af198c6.png)
 
 The updated design is checked in as mux_fix.v
 
