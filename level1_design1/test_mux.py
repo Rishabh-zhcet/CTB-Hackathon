@@ -53,7 +53,7 @@ async def test_mux_01(dut):
 
         dut._log.info(f'Sel={SEL:05} Input={INPUT[i]:02} DUT={(dut.out.value)}')
         if (dut.out.value != INPUT[i]):
-            print("MUX output failed with: sel={SEL},  output={dut.out.value}")
+            print("MUX output with: sel={SEL},  output={dut.out.value}------------Failed------------")
             flag=1
 
     assert flag== 0, "MUX output failed "
