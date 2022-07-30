@@ -4,10 +4,10 @@ TOPLEVEL_LANG ?= verilog
 
 PWD=$(shell pwd)
 
-VERILOG_SOURCES = $(PWD)/ non_buggy_seq_detect_1011.v
+VERILOG_SOURCES = $(PWD)/ buggy_parity_generator.v
 
-TOPLEVEL := non_buggy_seq_detect_1011          # design
-MODULE   := test_seq_detect_1011     # test
+TOPLEVEL :=     buggy_parity_generator
+MODULE   :=     test_paritygenerator
 
 include $(shell cocotb-config --makefiles)/Makefile.sim
 

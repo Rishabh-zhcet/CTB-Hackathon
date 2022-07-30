@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module buggy_paritygenerator(
+module buggy_parity_generator(
 input w,
 input clk,
 input reset,
