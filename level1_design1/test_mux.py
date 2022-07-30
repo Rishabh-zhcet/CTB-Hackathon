@@ -11,7 +11,7 @@ async def test_mux_01(dut):
      # input driving
  
     #Driving each input with '01'---'HIGH'
-    INPUT=[,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
+    INPUT=[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
     dut.inp0.value=INPUT[0]
     dut.inp1.value=INPUT[1]
     dut.inp2.value=INPUT[2]
