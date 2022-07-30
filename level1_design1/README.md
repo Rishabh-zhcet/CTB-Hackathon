@@ -21,9 +21,9 @@ Now the each input is driven by each element of the array respectively,
     dut.inp2.value=INPUT[2]
     dut.inp3.value=INPUT[3]
     dut.inp4.value=INPUT[4]
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
+     .     .     .      .
+     .     .     .      .
+     .     .     .      .
     dut.inp29.value=INPUT[29]
     dut.inp30.value=INPUT[30]
 ```
