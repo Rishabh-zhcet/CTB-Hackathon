@@ -181,9 +181,30 @@ always @(inp_bit or current_state)
   end
 ```
 
+After all the changes in the design, test is run again and all the valid cases are verified!
+
+![image](https://user-images.githubusercontent.com/65393666/182023260-7340195b-33f0-4d57-9949-bebb9044d488.png)
+
+In this also,a flag is incorporated to check if any of the test fails.
+The complete design verification is indicated by assert statement.
+```
+    print(f'***************************************************************************')
+    print(f'*  Total Cases={n}, Valid Cases={valid_case} Failed Cases={f}, Passed Cases={valid_case-f}  *')
+    print(f'***************************************************************************')
+
+    assert f==0, 'The design fails for Some inputs'
+```
+
 ## Verification Strategy
 
+The verification streategy was to provide a new random input to the sequence detector and check if the ouput is '1' for the sequnce '1011'. 
+
+Here valid case is the case in which the last 4 bits of the sequence is '1011' and rest all cases are considered as the invalid cases.The random inputs are provided using loop and random function. The result is verified for the valid cases as well as for the invalid cases if the output fails.
+
+For Valid cases we look for the '1' at the ouput and for all the invalid cases we look for the '0' at the output.
 
 
 ## Is the verification complete ?
+
+Since all the possiblities for valid and invalid cases are verified for 1000 random inputs, we can say that the verification is complete.
 
