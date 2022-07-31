@@ -81,9 +81,61 @@ From 1st and 2nd scenario, we can see that the design works well for non-overlap
 
 ## Design Bug
 
-    
+```
+  // state transition based on the input and current state
+  always @(inp_bit or current_state)
+  begin
+    case(current_state)
+      IDLE:
+      begin
+        if(inp_bit == 1)
+          next_state = SEQ_1;
+        else
+          next_state = IDLE;
+      end
+      SEQ_1:
+      begin
+        if(inp_bit == 1)
+          next_state = IDLE;                            ===> BUG
+        else
+          next_state = SEQ_10;
+      end
+      SEQ_10:
+      begin
+        if(inp_bit == 1)
+          next_state = SEQ_101;
+        else
+          next_state = IDLE;
+      end
+      SEQ_101:
+      begin
+        if(inp_bit == 1)
+          next_state = SEQ_1011;
+        else
+          next_state = IDLE;                            ===> BUG
+      end
+      SEQ_1011:
+      begin
+        next_state = IDLE;                              ===> BUG
+      end
+    endcase
+  end
+```
+
+These bugs are checked from the test cases and the state diagram of the FSM. 
 
 ## Design Fix
+
+The Changes are fixed by fixing the statediagram of the design.
+
+_Earlier State Diagram_
+
+![buggy](https://user-images.githubusercontent.com/65393666/182021214-137ae491-39b6-4263-89cd-06853731dec2.png)
+
+_New State Diagram_
+
+![fixed](https://user-images.githubusercontent.com/65393666/182021232-7eecd237-b8dc-4e2b-afe6-7feb052fb13d.png)
+
 
 ## Verification Strategy
 
