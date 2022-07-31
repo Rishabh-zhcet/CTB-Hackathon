@@ -9,9 +9,15 @@ The verification environment is setup using [Vyoma's UpTickPro](https://vyomasys
 
 The [CoCoTb](https://www.cocotb.org/) based Python test is developed.
 
-An array named 'INPUT' of 31 elements is declared with each element='1' ---'HIGH'
+An array named 'INPUT' of 31 elements is declared whose each element is generated using random function with values '01','02' and '03'
 
-INPUT=[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+'''
+#Driving each input with Random inputs like '01','10' or '11'
+    INPUT=[];
+    for k in range (31):
+        n=random.randint(1,3)
+        INPUT.append(n)
+        '''
 
 Now the each input is driven by each element of the array respectively,
 
@@ -39,14 +45,14 @@ for i in range (31):
 
         await Timer(2, units='ns')
 
-        dut._log.info(f'Sel={SEL:05} Input={INPUT[i]:02} DUT_OUTPUT={(dut.out.value)}')
+        dut._log.info(f'Sel={SEL:05} Input={INPUT[i]:02} DUT output={int(dut.out.value):02}')
 ```
 
 Now if statement is used inside for loop to check the result for each test case, if fail, the following statement is used to print the error message. The flag is also made eqaul to 1.
 
 ```
- if (dut.out.value != INPUT[i]):
-            print(f"FOR: sel={SEL},  INPUT!=OUTPUT        [test]  [------------Failed------------]")
+if (dut.out.value != INPUT[i]):
+            print(f"FOR: sel={SEL},  INPUT!=OUTPUT        [test]  [------------Failed------------]\n")
             flag=1
 ```
 if flag is not equal to 1. means no test fails. Then assert statement is used for checking the complete verification of design.
@@ -59,13 +65,26 @@ if flag is not equal to 1. means no test fails. Then assert statement is used fo
 
 Following error message exposed that there is a bug in the design:'
 
-- 6.00ns INFO     Sel=00012 Input=01 DUT_OUTPUT=00
-- FOR: sel=12,  INPUT!=OUTPUT        [test]  [------------Failed------------]
+Error:01
 
-Another Error Message:
+```
+    26.00ns INFO     Sel=00012 Input=02 DUT output=00
+FOR: sel=12,  INPUT!=OUTPUT        [test]  [------------Failed------------]
+```
 
-- 62.00ns INFO     Sel=00030 Input=01 DUT_OUTPUT=00
-- FOR: sel=30,  INPUT!=OUTPUT        [test]  [------------Failed------------]
+Error:02
+
+```
+    28.00ns INFO     Sel=00013 Input=03 DUT output=02
+FOR: sel=13,  INPUT!=OUTPUT        [test]  [------------Failed------------]
+```
+
+Error:03
+
+```
+    62.00ns INFO     Sel=00030 Input=01 DUT_OUTPUT=00
+FOR: sel=30,  INPUT!=OUTPUT        [test]  [------------Failed------------]
+```
 
 
 Output mismatches for the above inputs proving that there is a design bug. This also gives us information about which inputs fails the test.
@@ -117,7 +136,7 @@ Hence, one select case should be added for inp30.
 ## Design Fix
 Updating the design and re-running the test makes the test pass.
 
-![image](https://user-images.githubusercontent.com/65393666/181988568-8d73488f-d5b4-405f-8d9b-5fbd1af198c6.png)
+![image](https://user-images.githubusercontent.com/65393666/182012829-fe726453-e0f2-453e-aea3-ac16a09b899e.png)
 
 The updated design is checked in as mux_fix.v
 
