@@ -136,6 +136,50 @@ _New State Diagram_
 
 ![fixed](https://user-images.githubusercontent.com/65393666/182021232-7eecd237-b8dc-4e2b-afe6-7feb052fb13d.png)
 
+Accordingly the Code is modified as follows, the modified code is checked in as seq_detect_1011_fix.v
+
+```
+always @(inp_bit or current_state)
+  begin
+    case(current_state)
+      IDLE:
+      begin
+        if(inp_bit == 1)
+          next_state = SEQ_1;                   ===> Modified
+        else
+          next_state = IDLE;
+      end
+      SEQ_1:
+      begin
+        if(inp_bit == 1)
+          next_state = SEQ_1;
+        else
+          next_state = SEQ_10;
+      end
+      SEQ_10:
+      begin
+        if(inp_bit == 1)
+          next_state = SEQ_101;                 
+        else
+          next_state = IDLE;
+      end
+      SEQ_101:
+      begin
+        if(inp_bit == 1)
+          next_state = SEQ_1011;                
+        else
+          next_state = SEQ_10;                  ===> Modified
+      end
+      SEQ_1011:
+      begin
+        if(inp_bit == 1)
+          next_state = SEQ_1;                   ===> Modified        
+        else
+          next_state = SEQ_10;                  ===> Modified
+      end
+    endcase
+  end
+```
 
 ## Verification Strategy
 
