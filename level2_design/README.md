@@ -185,7 +185,7 @@ The dut ouput for **--ANDN 1** does not match with the model output.
 ---------------failed------
 ------------------------Value mismatch:  DUT = 0x8c09 does not match MODEL = 0x348d2063
 ```
-This shows that there is a bug in the design.
+This shows that there is a bug in the design. The design fails only on this instruction, for rest of the cases it passes the test.
 
 ## Verification Strategy
 
