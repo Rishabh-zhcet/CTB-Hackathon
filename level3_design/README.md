@@ -164,7 +164,7 @@ end
 
 ## Test Scenario 
 
-### TEST1:
+### TEST1: test_parity_generator 
 ```
 #----------------Valid Cases--------------#
  30010.00ns INFO     last 3bits seq=[0, 0, 0]  Parity=0, result=------------------, i=3
@@ -187,7 +187,7 @@ end
 *  Total Cases=300, Valid Cases=99 Failed Cases=35, Passed Cases=64  *
 ***************************************************************************
 ```
-### TEST2:
+### TEST2:test_parity_generator_2
 
 ```
 #-------------------------------------------#
@@ -220,7 +220,7 @@ end
 
 ### final result
 ```
-                      AssertionError: Output Passes for some inputs
+                      
 5990020.00ns INFO     ******************************************************************************************************
                       ** TEST                                          STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
                       ******************************************************************************************************
@@ -238,7 +238,7 @@ To check is the design fails on any of the valid cases. The random inputs are gi
 
 ## Is the verification complete ?
 
-yes, as its checked for 300 input sequences, the non-buggy design do not pass any error. IN this we have done a smaller change and it has been detected very easily.
+yes, as the design has been checked for 300 input sequences, the original design do not pass any error. In the buggy design, we have done a smaller change and it has been detected very easily.
 
 
 
