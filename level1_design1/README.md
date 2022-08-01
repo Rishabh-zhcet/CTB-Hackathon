@@ -10,14 +10,13 @@ The verification environment is setup using [Vyoma's UpTickPro](https://vyomasys
 The [CoCoTb](https://www.cocotb.org/) based Python test is developed.
 
 An array named 'INPUT' of 31 elements is declared whose each element is generated using random function with values '01','02' and '03'
-
-'''
+```
 #Driving each input with Random inputs like '01','10' or '11'
     INPUT=[];
     for k in range (31):
         n=random.randint(1,3)
         INPUT.append(n)
-        '''
+        ```
 
 Now the each input is driven by each element of the array respectively,
 
