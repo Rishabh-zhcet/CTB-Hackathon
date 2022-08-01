@@ -113,6 +113,8 @@ assert statement is used to final check of invalid cases, which is not in the lo
 ## Introducing Bug to the Design
 
 One state of FSM is changed with other.
+
+The buggy design is checked in as buggy_parity_generator.v
 ```
 
 always@(w,PS)
